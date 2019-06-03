@@ -1,11 +1,15 @@
 # TO-DO: Complete the selection_sort() function below 
 """
-Loop over array
-set the first item in the array to be the current minimum
-loop over each successive item in the array, and if the next item is lower than the current minimum
-set that lower number to be the new current minimum
-Once you've compared all the items, swap the current lowest minimum with the first item in the array.
-Loop through again, this time starting with the first unsorted item in the list, and setting that to be the new current minimum.
+selection_sort takes in an array.
+1) We loop through the array and set the current_minimum value to be the first item in the array's value.
+2) Next we start a second loop through the array, but this time starting 1 index to the right of the first loops current index.
+3) Inside the second loop, we set our current_compare_item to be the value of the second loop's current index.
+4) We then check that to see if the current_compare_item is less than the current_minimum value.
+5) If it is, we set a variable called new_minimum_index, to be the second loop's current index, and we set the current_minimum to be the current_compare_item.
+6) Once we get through the second loop, if the value of arr[i] is less than the arr[new_minimum_index], then we swap arr[i] and arr[new_minimum_index].
+7) Once we've swapped we move begin the second loop again at the 1th index.
+8) If we get an UnboundLocalError, it means that we never set a new_minimum_index, because the entire array was already sorted correctly. In this case, we just return the array.
+9) Once we've sorted all the items, return the new mutated array.
 
 """
 
@@ -18,15 +22,14 @@ def selection_sort( arr ):
             if cur_compare_item < cur_minimum:
                 new_minimum_index = j
                 cur_minimum = cur_compare_item
-        if arr[i] > arr[new_minimum_index]:
-            arr[i], arr[new_minimum_index] = arr[new_minimum_index], arr[i]
-    
-    
-
-
+        try:        
+            if arr[i] > arr[new_minimum_index]:
+                arr[i], arr[new_minimum_index] = arr[new_minimum_index], arr[i]
+        except UnboundLocalError:
+            return arr
     return arr
 
-print(selection_sort([1, 5, 8, 4, 2, 9, 6, 0, 3, 7]))
+print(selection_sort([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]))
 
 
 """
