@@ -48,6 +48,9 @@ def search(list, value):
 
 This is O(n) ^^^
 
+---
+O(log n)
+
 If you have an algorithm that gets rid of half the data every time, it's probably a O(log n)
 
 bad_binary_search(list, value):
@@ -62,4 +65,35 @@ If I sort first, then I can make binary_searches and making a ton of binary_sear
 
 Initially, a linear search is faster than a sort + binary_search, but the linear searches becomes much more expensive over many searches.
 
-    
+-----
+Insertion Sort:
+
+We're going to sort books, so let's initialize a Book class.
+
+class Book:
+    def __init__(self, t, a, g)
+        title = t
+        author = a
+        genre = g
+
+def insertion_sort(books):
+    # loop through the length of books
+    for i in range(1, len(books)):
+        # save the current index as temp_book
+        temp_book = books[i]
+        # make a copy of i saved as j
+        j = i
+            # for each item in books, run a while loop that checks if j is greater than 0
+            # and checks if temp_book.genre (the current book's genre),
+            # is less than the book at j directly to the left
+        while j > 0 and temp_book.genre < books[j - 1].genre:
+        # If it is:
+        # scoot books over to make room for the one we're sorting.
+        books[j] = books[j - 1] 
+        # Then decrement the location of j down one to the left
+            j -= 1
+        # Then set books at j to equal temp_book
+        books[j] = temp_book
+
+    return books
+
