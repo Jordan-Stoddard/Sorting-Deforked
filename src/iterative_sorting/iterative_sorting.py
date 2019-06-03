@@ -1,18 +1,32 @@
 # TO-DO: Complete the selection_sort() function below 
 """
-selection_sort takes in an array.
-select the first index of the array and slice it into a new array.
-select the new first index of the first array and compare it against each item in the new array from right to left
-if it is smaller than the right most index, move to the left, if it is larger, insert there.
+Loop over array
+set the first item in the array to be the current minimum
+loop over each successive item in the array, and if the next item is lower than the current minimum
+set that lower number to be the new current minimum
+Once you've compared all the items, swap the current lowest minimum with the first item in the array.
+Loop through again, this time starting with the first unsorted item in the list, and setting that to be the new current minimum.
+
 """
 
 def selection_sort( arr ):
     # loop through n-1 elements
-    sorted = []
     for i in range(0, len(arr) - 1):
-        cur_index = i
-        smallest_index = cur_index
+        cur_minimum = arr[i]
+        for j in range(i + 1, len(arr)):
+            cur_compare_item = arr[j]
+            if cur_compare_item < cur_minimum:
+                new_minimum_index = j
+                cur_minimum = cur_compare_item
+        if arr[i] > arr[new_minimum_index]:
+            arr[i], arr[new_minimum_index] = arr[new_minimum_index], arr[i]
+    
+    
+
+
     return arr
+
+print(selection_sort([1, 5, 8, 4, 2, 9, 6, 0, 3, 7]))
 
 
 """
