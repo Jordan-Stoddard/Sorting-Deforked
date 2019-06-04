@@ -1,17 +1,17 @@
-# TO-DO: complete the helper function below to merge 2 sorted arrays
-def merge( arrA, arrB ):
+# TO-DO: complete the helper function below to merge 2 sorted leftys
+def merge( leftA, rightA ):
     result = []
-    while len(arrA) != 0 and len(arrB) != 0:
-        if arrA[0] < arrB[0]:
-            result.append(arrA[0])
-            arrA.remove(arrA[0])
+    while len(leftA) != 0 and len(rightA) != 0:
+        if leftA[0] < rightA[0]:
+            result.append(leftA[0])
+            leftA.remove(leftA[0])
         else:
-            result.append(arrB[0])
-            arrB.remove(arrB[0])
-    if len(arrA) == 0:
-        result += arrB
+            result.append(rightA[0])
+            rightA.remove(rightA[0])
+    if len(leftA) == 0:
+        result += rightA
     else:
-        result += arrA
+        result += leftA
     return result
 
 
