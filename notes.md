@@ -14,4 +14,5 @@ sum(a, b):
     if a == b:
         return 
     return a + sum(a+1, b)
-    x = sum(0, 4)
+
+x = sum(0, 4)
